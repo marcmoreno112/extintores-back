@@ -3,7 +3,7 @@ import createDebug from "debug";
 import chalk from "chalk";
 import app from "./server/index.js";
 
-const debug = createDebug("extintores-api:");
+const debug = createDebug("extintores-api:root");
 
 const port = process.env.PORT ?? 4000;
 
