@@ -11,7 +11,7 @@ export const notFoundError = (
   res: Response,
   next: NextFunction
 ) => {
-  const statusCode = 400;
+  const statusCode = 404;
 
   const message = "Endpoint not found";
 
