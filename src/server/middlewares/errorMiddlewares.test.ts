@@ -23,17 +23,17 @@ describe("Given a notFoundError middleware", () => {
 });
 
 describe("Given a generalError middleware", () => {
-  describe("When it receives an error with statusCode 402", () => {
-    test("Then it should call the response's method status with 402", () => {
+  const req = {};
+  const next = jest.fn();
+  const res: Pick<Response, "status" | "json"> = {
+    status: jest.fn().mockReturnThis(),
+    json: jest.fn(),
+  };
+  describe("When it receives an error with statusCode 402 and message 'Mock error'", () => {
+    test("Then it should call the response's status method with 402 and json method with 'Mock error' message", () => {
       const expectedStatus = 402;
-      const expectedMessage = "";
+      const expectedMessage = "Mock error";
       const error = new CustomError(expectedMessage, expectedStatus);
-      const req = {};
-      const next = jest.fn();
-      const res: Pick<Response, "status" | "json"> = {
-        status: jest.fn().mockReturnThis(),
-        json: jest.fn(),
-      };
 
       generalError(
         error,
@@ -43,6 +43,24 @@ describe("Given a generalError middleware", () => {
       );
 
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
+      expect(res.json).toHaveBeenCalledWith({ message: expectedMessage });
+    });
+  });
+  describe("When it receives an error without statusCode", () => {
+    test("Then it should return an error with status 500 and message 'General error'", () => {
+      const expectedStatus = 500;
+      const expectedMessage = "General error";
+      const error = new Error();
+
+      generalError(
+        error as CustomError,
+        req as Request,
+        res as Response,
+        next as NextFunction
+      );
+
+      expect(res.status).toHaveBeenCalledWith(expectedStatus);
+      expect(res.json).toHaveBeenCalledWith({ message: expectedMessage });
     });
   });
 });
