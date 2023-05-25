@@ -8,5 +8,5 @@ const debug = createDebug("extintores-api:");
 const port = process.env.PORT ?? 4000;
 
 app.listen(port, () => {
-  debug(`Listening on ${chalk.green(`http://localhost:${port}`)}`);
+  debug(chalk.bgGreen(`Listening on http://localhost:${port}`));
 });
