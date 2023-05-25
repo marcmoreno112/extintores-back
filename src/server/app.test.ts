@@ -1,10 +1,10 @@
 import request from "supertest";
 import app from ".";
 
-type CustomResponse = {
+interface CustomResponse {
   status: number;
   body: { message: string };
-};
+}
 
 describe("Given a GET '/' endpoint", () => {
   describe("When it receives a request", () => {

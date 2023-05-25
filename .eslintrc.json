@@ -11,8 +11,12 @@
       "rules": {
         "no-console": "error",
         "no-unused-vars": "error",
-        "@typescript-eslint/consistent-type-definitions": "error"
+        "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
       }
+    },
+    {
+      "files": ["src/**/models/**/*.ts"],
+      "rules": { "@typescript-eslint/naming-convention": "off" }
     }
   ],
   "parserOptions": {
