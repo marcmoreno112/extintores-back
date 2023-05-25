@@ -26,7 +26,7 @@ describe("Given a generalError middleware", () => {
   describe("When it receives an error with statusCode 402", () => {
     test("Then it should call the response's method status with 402", () => {
       const expectedStatus = 402;
-      const expectedMessage = "";
+      const expectedMessage = "Mock error";
       const error = new CustomError(expectedMessage, expectedStatus);
       const req = {};
       const next = jest.fn();
@@ -43,6 +43,7 @@ describe("Given a generalError middleware", () => {
       );
 
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
+      expect(res.json).toHaveBeenCalledWith({ message: expectedMessage });
     });
   });
 });
