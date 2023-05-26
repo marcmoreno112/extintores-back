@@ -9,12 +9,21 @@ import {
 } from "../../types";
 import { loginUser } from "./userControllers";
 import User from "../../../database/models/User";
+import CustomError from "../../CustomError/CustomError";
+import errorMessages from "../../../utils/errorMessages";
 
 beforeEach(() => {
   jest.clearAllMocks();
 });
 
 describe("Given a loginUser controller", () => {
+  const res: Pick<Response, "status" | "json"> = {
+    status: jest.fn().mockReturnThis(),
+    json: jest.fn(),
+  };
+
+  const next = jest.fn();
+
   describe("When it receives a request with valid credentials", () => {
     test("Then it should respond with a 200 status and a token", async () => {
       const validUser: UserCredentials = {
@@ -39,13 +48,6 @@ describe("Given a loginUser controller", () => {
 
       jwt.sign = jest.fn().mockReturnValue("token");
 
-      const res: Pick<Response, "status" | "json"> = {
-        status: jest.fn().mockReturnThis(),
-        json: jest.fn(),
-      };
-
-      const next = jest.fn();
-
       await loginUser(
         req as UserCredentialsRequest,
         res as Response,
@@ -56,6 +58,35 @@ describe("Given a loginUser controller", () => {
 
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
       expect(res.json).toHaveBeenCalledWith({ token: "token" });
+    });
+  });
+  describe("When it receives a request with invalid credentials", () => {
+    test(`Then it should call the next function with an error with status code 401 and message ${errorMessages.wrongCredentials}`, async () => {
+      const inValidUser: UserCredentials = {
+        username: "cracker",
+        password: "cracker",
+      };
+
+      User.findOne = jest.fn().mockReturnValue({
+        exec: jest.fn().mockResolvedValue(null),
+      });
+
+      const req: Pick<UserCredentialsRequest, "body"> = { body: inValidUser };
+
+      await loginUser(
+        req as UserCredentialsRequest,
+        res as Response,
+        next as NextFunction
+      );
+
+      const expectedStatus = 401;
+
+      const error = new CustomError(
+        errorMessages.wrongCredentials,
+        expectedStatus
+      );
+
+      expect(next).toHaveBeenCalledWith(error);
     });
   });
 });
