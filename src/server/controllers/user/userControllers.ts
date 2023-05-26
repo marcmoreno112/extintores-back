@@ -14,7 +14,7 @@ export const loginUser = async (
   const { username, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username }).exec();
 
     if (!user || !(await bcrypt.compare(password, user.password))) {
       const customMessage = errorMessages.wrongCredentials;
@@ -28,7 +28,7 @@ export const loginUser = async (
 
     const tokenPayload: JwtPayload = {
       sub: user._id.toString(),
-      name: user.username,
+      name: user.name,
     };
 
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET!, {
