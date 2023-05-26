@@ -1,6 +1,7 @@
 const paths = {
+  login: "/login",
   ping: "/",
-  user: "/user/login",
+  user: "/user",
 };
 
 export default paths;
