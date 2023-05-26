@@ -1,4 +1,5 @@
 import { type NextFunction, type Request, type Response } from "express";
+import { ValidationError } from "express-validation";
 import { generalError, notFoundError } from "./errorMiddlewares";
 import CustomError from "../CustomError/CustomError.js";
 import errorMessages from "../../utils/errorMessages";
@@ -52,6 +53,43 @@ describe("Given a generalError middleware", () => {
       const expectedStatus = 500;
       const expectedMessage = errorMessages.general;
       const error = new Error();
+
+      generalError(
+        error as CustomError,
+        req as Request,
+        res as Response,
+        next as NextFunction
+      );
+
+      expect(res.status).toHaveBeenCalledWith(expectedStatus);
+      expect(res.json).toHaveBeenCalledWith({ message: expectedMessage });
+    });
+  });
+  describe("When it receives a ValidationError with the message 'Invalid password'", () => {
+    test("Then it should retunr an error with status 400 and the message", () => {
+      const expectedStatus = 400;
+      const expectedMessage = "Password not valid";
+      const error = new ValidationError(
+        {
+          body: [
+            {
+              _original: "mock",
+              details: [
+                {
+                  message: "Invalid password",
+                  path: ["/user/login"],
+                  type: "error",
+                },
+              ],
+              isJoi: true,
+              message: "Password not valid",
+              name: "ValidationError",
+              annotate: () => "mock",
+            },
+          ],
+        },
+        { statusCode: 400 }
+      );
 
       generalError(
         error as CustomError,
