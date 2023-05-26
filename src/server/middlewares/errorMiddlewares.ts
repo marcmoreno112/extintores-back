@@ -3,6 +3,7 @@ import CustomError from "../CustomError/CustomError.js";
 import "../../loadEnvironment.js";
 import createDebug from "debug";
 import chalk from "chalk";
+import errorMessages from "../../utils/errorMessages.js";
 
 const debug = createDebug("extintores-api:middlewares:errorMiddlewares");
 
@@ -13,7 +14,7 @@ export const notFoundError = (
 ) => {
   const statusCode = 404;
 
-  const message = "Endpoint not found";
+  const message = errorMessages.notFound;
 
   const error = new CustomError(message, statusCode);
 
@@ -30,7 +31,7 @@ export const generalError = (
 
   const statusCode = error.statusCode || 500;
 
-  const message = error.statusCode ? error.message : "General error";
+  const message = error.statusCode ? error.message : errorMessages.general;
 
   res.status(statusCode).json({ message });
 };
