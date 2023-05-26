@@ -3,8 +3,8 @@ import cors from "cors";
 import morgan from "morgan";
 import { generalError, notFoundError } from "./middlewares/errorMiddlewares.js";
 import pingController from "./controllers/pingController/pingController.js";
-import paths from "./paths/paths.js";
-import { loginUser } from "./controllers/pingController/user/userControllers.js";
+import paths from "../utils/paths.js";
+import { loginUser } from "./controllers/user/userControllers.js";
 
 const app = express();
 

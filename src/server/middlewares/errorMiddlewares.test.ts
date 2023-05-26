@@ -1,12 +1,13 @@
 import { type NextFunction, type Request, type Response } from "express";
 import { generalError, notFoundError } from "./errorMiddlewares";
 import CustomError from "../CustomError/CustomError.js";
+import errorMessages from "../../utils/errorMessages";
 
 describe("Given a notFoundError middleware", () => {
   describe("When it receives an error", () => {
-    test("Then it should call the response's method status with 400", () => {
+    test(`Then it should call the response's method status with a custom error with status 404 and message ${errorMessages.notFound}`, () => {
       const expectedStatus = 404;
-      const expectedMessage = "Endpoint not found";
+      const expectedMessage = errorMessages.notFound;
       const req = {};
       const res: Pick<Response, "status" | "json"> = {
         status: jest.fn().mockReturnThis(),
@@ -47,9 +48,9 @@ describe("Given a generalError middleware", () => {
     });
   });
   describe("When it receives an error without statusCode", () => {
-    test("Then it should return an error with status 500 and message 'General error'", () => {
+    test(`Then it should return an error with status 500 and message ${errorMessages.general}`, () => {
       const expectedStatus = 500;
-      const expectedMessage = "General error";
+      const expectedMessage = errorMessages.general;
       const error = new Error();
 
       generalError(
