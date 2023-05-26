@@ -1,5 +1,5 @@
 const errorMessages = {
-  general: "General error",
+  general: "Server error",
   notFound: "Endpoint not found",
   ping: "🏓 Pong",
   wrongCredentials: "Wrong credentials",

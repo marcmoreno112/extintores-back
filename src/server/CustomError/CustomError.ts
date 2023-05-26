@@ -2,9 +2,11 @@ class CustomError extends Error {
   constructor(
     message: string,
     public statusCode: number,
-    public publicmessage?: string
+    public publicMessage?: string
   ) {
     super(message);
+
+    this.publicMessage = publicMessage ?? message;
   }
 }
 
