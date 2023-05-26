@@ -24,7 +24,7 @@ describe("Given a loginUser controller", () => {
 
   const next = jest.fn();
 
-  describe("When it receives a request with valid credentials", () => {
+  describe("When it receives a request with valid user with username admin and password admin", () => {
     test("Then it should respond with a 200 status and a token", async () => {
       const validUser: UserCredentials = {
         username: "admin",
