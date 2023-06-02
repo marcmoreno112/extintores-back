@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { type NextFunction } from "express";
+import { type Response, type NextFunction } from "express";
 import { type CustomRequest } from "../../types";
 import CustomError from "../../CustomError/CustomError";
 

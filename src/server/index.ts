@@ -27,7 +27,7 @@ app.get(paths.ping, pingController);
 
 app.use(paths.user, userRouter);
 
-app.get(paths.extinguishers, getExtinguishers);
+app.use(paths.extinguishers, getExtinguishers);
 
 app.use(notFoundError);
 
