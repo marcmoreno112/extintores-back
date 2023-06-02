@@ -36,3 +36,7 @@ export interface ExtinguisherData {
   strengths: string;
   user: Types.ObjectId;
 }
+
+export interface CustomRequest extends Request {
+  userId: string;
+}
