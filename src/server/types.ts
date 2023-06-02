@@ -6,6 +6,10 @@ export interface UserCredentials {
   password: string;
 }
 
+export interface DbUser extends UserCredentials {
+  name: string;
+}
+
 export type UserCredentialsRequest = Request<
   Record<string, unknown>,
   Record<string, unknown>,

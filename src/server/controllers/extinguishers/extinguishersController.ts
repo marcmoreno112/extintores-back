@@ -12,7 +12,8 @@ export const getExtinguishers = async (
     const status = 200;
 
     res.status(status).json({ extinguishers });
-  } catch (error: unknown) {
+  } catch {
+    const error = new Error("Database error");
     next(error);
   }
 };
