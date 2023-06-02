@@ -19,3 +19,16 @@ export interface UserDataStructure extends UserCredentials {
 export interface UserData extends UserCredentials {
   _id: Types.ObjectId;
 }
+
+export interface ExtinguisherData {
+  brand: string;
+  model: string;
+  class: string[];
+  img: string;
+  usefulLife: string;
+  fireExtinguishingAgent: string;
+  description: string;
+  disadvantages: string;
+  strengths: string;
+  user: Types.ObjectId;
+}
