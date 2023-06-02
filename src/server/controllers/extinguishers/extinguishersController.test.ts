@@ -9,7 +9,7 @@ beforeEach(() => {
 });
 
 describe("Given a getExtinguishers controller", () => {
-  describe("When it receives a response", () => {
+  describe("When it receives a request and the DB answers", () => {
     test("Then it should call the response status method with 200 and json method with a list of extinguishers", async () => {
       const req = {};
       const res: Pick<Response, "status" | "json"> = {
@@ -50,6 +50,27 @@ describe("Given a getExtinguishers controller", () => {
       expect(res.json).toHaveBeenCalledWith({
         extinguishers: extinguishersMock,
       });
+    });
+  });
+  describe("When it receives a request and the DB fails", () => {
+    test("Then it should call the next function with a 'Database error' error", async () => {
+      const req = {};
+      const res = {};
+      const next = jest.fn();
+      const error = new Error("Database error");
+
+      Extinguisher.find = jest.fn().mockReturnValue({
+        limit: jest.fn().mockReturnThis(),
+        exec: jest.fn().mockRejectedValue(error),
+      });
+
+      await getExtinguishers(
+        req as Request,
+        res as Response,
+        next as NextFunction
+      );
+
+      expect(next).toHaveBeenCalledWith(error);
     });
   });
 });

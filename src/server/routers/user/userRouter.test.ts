@@ -2,7 +2,11 @@ import "../../../loadEnvironment.js";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import request from "supertest";
 import jwt from "jsonwebtoken";
-import { type UserData } from "../../types.js";
+import {
+  type DbUser,
+  type UserCredentials,
+  type UserData,
+} from "../../types.js";
 import connectToDatabase from "../../../database/connectToDatabase.js";
 import User from "../../../database/models/User.js";
 import mongoose from "mongoose";
@@ -28,14 +32,14 @@ afterAll(async () => {
 describe("Given a POST 'user/login' endpoint", () => {
   describe("When it receives a request with a valid user with username admin and password admin", () => {
     test("Then it should responde with status 200 and a token", async () => {
-      const createdUser = {
+      const createdUser: DbUser = {
         username: "admin",
         password:
           "$2y$10$oIlXdXUt5rwSsxm95Sxg/uHPP77viYVgQjWbVc6nH0YbewkmkBepS",
         name: "admin",
       };
 
-      const validUser = {
+      const validUser: UserCredentials = {
         username: "admin",
         password: "admin",
       };
