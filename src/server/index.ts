@@ -5,7 +5,7 @@ import { generalError, notFoundError } from "./middlewares/errorMiddlewares.js";
 import pingController from "./controllers/pingController/pingController.js";
 import paths from "../utils/paths.js";
 import userRouter from "./routers/user/userRouter.js";
-import { getExtinguishers } from "./controllers/extinguishers/extinguishersController.js";
+import extinguishersRouter from "./routers/extinguishers/extinguishersRouter.js";
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.get(paths.ping, pingController);
 
 app.use(paths.user, userRouter);
 
-app.use(paths.extinguishers, getExtinguishers);
+app.use(paths.extinguishers, extinguishersRouter);
 
 app.use(notFoundError);
 

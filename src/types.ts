@@ -25,6 +25,7 @@ export interface UserData extends UserCredentials {
 }
 
 export interface ExtinguisherData {
+  id: string;
   brand: string;
   model: string;
   class: string[];
@@ -34,7 +35,7 @@ export interface ExtinguisherData {
   description: string;
   disadvantages: string;
   strengths: string;
-  user: Types.ObjectId;
+  user: string;
 }
 
 export interface CustomRequest extends Request {
