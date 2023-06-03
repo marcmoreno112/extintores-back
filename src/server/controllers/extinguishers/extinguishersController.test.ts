@@ -1,8 +1,7 @@
 import { type Response, type NextFunction, type Request } from "express";
 import { getExtinguishers } from "./extinguishersController";
 import Extinguisher from "../../../database/models/Extinguisher";
-import { type ExtinguisherData } from "../../types";
-import { Types } from "mongoose";
+import { extinguishersMock } from "../../../mocks/factories/extinguisherFactory/extinguisherFactory";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -18,26 +17,13 @@ describe("Given a getExtinguishers controller", () => {
       };
       const next = jest.fn();
 
-      const extinguishersMock: ExtinguisherData[] = [
-        {
-          brand: "Exting",
-          model: "Uisher",
-          class: ["A", "K"],
-          description: "",
-          disadvantages: "",
-          fireExtinguishingAgent: "",
-          img: "",
-          strengths: "",
-          usefulLife: "1 year",
-          user: new Types.ObjectId(),
-        },
-      ];
+      const extinguishers = extinguishersMock(1);
 
       const expectedStatus = 200;
 
       Extinguisher.find = jest.fn().mockReturnValue({
         limit: jest.fn().mockReturnThis(),
-        exec: jest.fn().mockResolvedValue(extinguishersMock),
+        exec: jest.fn().mockResolvedValue(extinguishers),
       });
 
       await getExtinguishers(
@@ -48,7 +34,7 @@ describe("Given a getExtinguishers controller", () => {
 
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
       expect(res.json).toHaveBeenCalledWith({
-        extinguishers: extinguishersMock,
+        extinguishers,
       });
     });
   });

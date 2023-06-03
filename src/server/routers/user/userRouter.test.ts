@@ -6,7 +6,7 @@ import {
   type DbUser,
   type UserCredentials,
   type UserData,
-} from "../../types.js";
+} from "../../../types.js";
 import connectToDatabase from "../../../database/connectToDatabase.js";
 import User from "../../../database/models/User.js";
 import mongoose from "mongoose";

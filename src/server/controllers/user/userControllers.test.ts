@@ -6,7 +6,7 @@ import {
   type UserDataStructure,
   type UserCredentials,
   type UserCredentialsRequest,
-} from "../../types";
+} from "../../../types";
 import { loginUser } from "./userControllers";
 import User from "../../../database/models/User";
 import CustomError from "../../CustomError/CustomError";
