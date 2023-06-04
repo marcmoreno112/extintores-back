@@ -4,42 +4,49 @@ Backend project for the Extintores app. This application shows a public list of 
 
 Follow the link to access the front repository: https://github.com/isdi-coders-2023/Marc-Moreno-Final-Project-front-202304-bcn
 
+## Scripts
+
+---
+
+`npm run build`: compiles the app's source code
+
+`npm run start`: starts the app
+
+`npm run test`: runs tests
+
 ## Tech Stack
 
 ---
 
-### **Client**
-
-🔸React  
-🔸Redux  
-🔸Styled-components
-
 ### **Server**
 
-🔸Node
-🔸Express
+🔸Node (https://nodejs.org/en)  
+🔸Express (https://expressjs.com/)  
+<br>
 
 ### **DDBB**
 
-🔸MongoDB Atlas (https://www.mongodb.com/docs/)
+🔸MongoDB Atlas (https://www.mongodb.com/docs/)  
+<br>
 
 ### **API**
 
-🔸Render (https://render.com/docs)
+🔸Render (https://render.com/docs)  
+<br>
 
 ### **Languages**
 
-🔸Typescript (https://www.typescriptlang.org/docs/)
+🔸Typescript (https://www.typescriptlang.org/docs/)  
+<br>
 
 ### **Good Practices Tools**
 
 🔸Husky hooks (https://typicode.github.io/husky/#/)  
 🔸Eslint (https://eslint.org/)  
 🔸Code formatter Prettier (https://prettier.io/)  
-🔸SonarCloud (https://www.sonarsource.com/products/sonarcloud/)
+🔸Editorconfig  
+🔸SonarCloud (https://www.sonarsource.com/products/sonarcloud/)  
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=isdi-coders-2023_Marc-Moreno-Final-Project-back-202304-bcn)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Marc-Moreno-Final-Project-back-202304-bcn)
-
-🔸Editorconfig
 
 ### **Testing**
 
@@ -47,7 +54,9 @@ Follow the link to access the front repository: https://github.com/isdi-coders-2
 🔸Jest (https://jestjs.io/)  
 🔸Mock Service Worker (https://mswjs.io/)  
 🔸MongoDB Memory Server (https://www.npmjs.com/package/mongodb-memory-server)  
-🔸Supertest (https://www.npmjs.com/package/supertest)
+🔸Supertest (https://www.npmjs.com/package/supertest)  
+🔸Fishery (https://github.com/thoughtbot/fishery)  
+🔸Faker-js (https://fakerjs.dev/)
 
 ---
 
@@ -65,7 +74,7 @@ Follow the link to access the front repository: https://github.com/isdi-coders-2
 
 - Dev URL: http://localhost:4000/ping
 
-- Prod URL: https://marc-moreno-final-project-202304-bcn.netlify.app/ping
+- Prod URL: https://marc-moreno-final-project-back-202304-bcn.onrender.com/ping
 
 - Response: Status 200, {
   "message": "🏓 Pong"
@@ -81,7 +90,7 @@ Follow the link to access the front repository: https://github.com/isdi-coders-2
 
 - Dev URL: http://localhost:4000/user/login
 
-- Prod URL: https://marc-moreno-final-project-202304-bcn.netlify.app/user/login
+- Prod URL: https://marc-moreno-final-project-back-202304-bcn.onrender.com/user/login
 
 - Request body: {"username": admin, "password": admin}
 
@@ -99,7 +108,7 @@ Follow the link to access the front repository: https://github.com/isdi-coders-2
 
 - Dev URL: http://localhost:4000/extinguishers
 
-- Prod URL: https://marc-moreno-final-project-202304-bcn.netlify.app/extinguishers
+- Prod URL: https://marc-moreno-final-project-back-202304-bcn.onrender.com/extinguishers
 
 - Response: Status 200, { extinguishers: []}
 
