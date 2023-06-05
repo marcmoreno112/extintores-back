@@ -1,5 +1,5 @@
 const paths = {
-  extinguishers: "/extinguishers",
+  extinguishers: "/extintores",
   login: "/login",
   ping: "/",
   user: "/user",
