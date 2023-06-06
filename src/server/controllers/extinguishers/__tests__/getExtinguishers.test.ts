@@ -1,14 +1,14 @@
 import { type Response, type NextFunction, type Request } from "express";
-import { getExtinguishers } from "./extinguishersController";
-import Extinguisher from "../../../database/models/Extinguisher";
-import { extinguishersMock } from "../../../mocks/factories/extinguisherFactory/extinguisherFactory";
+import { getExtinguishers } from "../extinguishersController";
+import Extinguisher from "../../../../database/models/Extinguisher";
+import { extinguishersMock } from "../../../../mocks/factories/extinguisherFactory/extinguisherFactory";
 
 beforeEach(() => {
   jest.clearAllMocks();
 });
 
 describe("Given a getExtinguishers controller", () => {
-  describe("When it receives a request and the DB answers", () => {
+  describe("When it receives a request and the database answers", () => {
     test("Then it should call the response status method with 200 and json method with a list of extinguishers", async () => {
       const req = {};
       const res: Pick<Response, "status" | "json"> = {
@@ -38,7 +38,7 @@ describe("Given a getExtinguishers controller", () => {
       });
     });
   });
-  describe("When it receives a request and the DB fails", () => {
+  describe("When it receives a request and the database fails", () => {
     test("Then it should call the next function with a 'Database error' error", async () => {
       const req = {};
       const res = {};

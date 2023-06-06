@@ -1,5 +1,6 @@
 import { type Request } from "express";
 import { type Types } from "mongoose";
+import type * as core from "express-serve-static-core";
 
 export interface UserCredentials {
   username: string;
@@ -39,5 +40,15 @@ export interface ExtinguisherData {
 }
 
 export interface CustomRequest extends Request {
+  userId: string;
+}
+
+export interface TestRequest<
+  P = core.ParamsDictionary,
+  ResBody = any,
+  ReqBody = any,
+  ReqQuery = core.Query,
+  Locals extends Record<string, any> = Record<string, any>
+> extends core.Request<P, ResBody, ReqBody, ReqQuery, Locals> {
   userId: string;
 }

@@ -23,3 +23,6 @@ export const extinguishersMock = (
   numberOfExtinguishers: number,
   data?: ExtinguisherData
 ) => extinguisherFactory.buildList(numberOfExtinguishers, data);
+
+export const extinguisherMock = (data?: ExtinguisherData) =>
+  extinguisherFactory.build(data);
