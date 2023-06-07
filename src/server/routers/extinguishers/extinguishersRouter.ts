@@ -9,6 +9,6 @@ const extinguishersRouter = Router();
 
 extinguishersRouter.get("/", getExtinguishers);
 
-extinguishersRouter.delete("/delete/:id", auth, deleteExtinguisher);
+extinguishersRouter.delete("/:id", auth, deleteExtinguisher);
 
 export default extinguishersRouter;
