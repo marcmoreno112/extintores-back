@@ -104,4 +104,23 @@ describe(`Given a DELETE endpoint`, () => {
       expect(response.body.message).toBe(expectedMessage);
     });
   });
+  describe("When it receives a request with a valid token and an id that doesn't exist", () => {
+    test("Then it should respond with status 404 and message 'Extinguisher not found'", async () => {
+      const expectedStatus = 404;
+      const expectedMessage = "Extinguisher not found";
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmNmJmYmI3NzkyOGMxZDNjZTI3OTMiLCJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2ODYxMzE2OTcsImV4cCI6MTcxMjA1MTY5N30.mrAkUYiwCME4oXmabUOPOPBZ-hqXygbu1_KKSXh9TOA";
+
+      const id = "5fbd2a81f4b3c96d54d32c9a";
+
+      const path = `${paths.extinguishers}/${id}`;
+
+      const response = await request(app)
+        .delete(path)
+        .set("Authorization", `Bearer ${token}`)
+        .expect(expectedStatus);
+
+      expect(response.body.message).toBe(expectedMessage);
+    });
+  });
 });
