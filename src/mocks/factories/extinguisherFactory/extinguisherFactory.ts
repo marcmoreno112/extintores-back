@@ -1,9 +1,8 @@
 import { Factory } from "fishery";
-import { type ExtinguisherData } from "../../../types.js";
+import { type ExtinguisherStructure } from "../../../types.js";
 import { faker } from "@faker-js/faker";
 
-const extinguisherFactory = Factory.define<ExtinguisherData>(() => ({
-  id: faker.database.mongodbObjectId().toString(),
+const extinguisherFactory = Factory.define<ExtinguisherStructure>(() => ({
   user: faker.database.mongodbObjectId().toString(),
   brand: faker.company.name(),
   class: faker.helpers.arrayElements(["A", "B", "C", "D", "K"], {
@@ -21,8 +20,8 @@ const extinguisherFactory = Factory.define<ExtinguisherData>(() => ({
 
 export const extinguishersMock = (
   numberOfExtinguishers: number,
-  data?: ExtinguisherData
+  data?: ExtinguisherStructure
 ) => extinguisherFactory.buildList(numberOfExtinguishers, data);
 
-export const extinguisherMock = (data?: ExtinguisherData) =>
+export const extinguisherMock = (data?: ExtinguisherStructure) =>
   extinguisherFactory.build(data);

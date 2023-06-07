@@ -1,5 +1,4 @@
 import { type Response, type NextFunction } from "express";
-import { extinguisherMock } from "../../../../mocks/factories/extinguisherFactory/extinguisherFactory";
 import { type TestRequest } from "../../../../types";
 import Extinguisher from "../../../../database/models/Extinguisher";
 import { deleteExtinguisher } from "../extinguishersController";
@@ -9,11 +8,11 @@ beforeEach(() => {
 });
 
 describe("Given a deleteExtinguisher controller", () => {
-  const { id: extinguisherId } = extinguisherMock();
+  const id = "1234mockID";
 
   const req: Partial<TestRequest> = {
     params: {
-      id: extinguisherId,
+      id,
     },
   };
 
