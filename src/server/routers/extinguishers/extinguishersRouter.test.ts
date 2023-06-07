@@ -36,7 +36,7 @@ describe(`Given a GET '${paths.extinguishers}' endpoint`, () => {
     test("Then it should responde with status 200 and a list of extinguishers", async () => {
       const expectedStatus = 200;
 
-      const path = `${paths.extinguishers}`;
+      const path = paths.extinguishers;
 
       const response: { body: { extinguishers: ExtinguisherData[] } } =
         await request(app).get(path).expect(expectedStatus);
@@ -44,6 +44,25 @@ describe(`Given a GET '${paths.extinguishers}' endpoint`, () => {
       const { extinguishers } = response.body;
 
       expect(extinguishers).toHaveLength(3);
+    });
+  });
+});
+
+describe(`Given a DELETE endpoint`, () => {
+  describe("When it receives a request with an invalid token", () => {
+    test("Then it should respond with status 401 and message 'Invalid token'", async () => {
+      const expectedStatus = 401;
+      const expectedMessage = "Invalid token";
+      const fakeToken = "64711e57b77928c1d3ce27d1";
+
+      const path = `${paths.extinguishers}/${fakeToken}`;
+
+      const response = await request(app)
+        .delete(path)
+        .set("Authorization", `Bearer ${fakeToken}`)
+        .expect(expectedStatus);
+
+      expect(response.body.message).toBe(expectedMessage);
     });
   });
 });
