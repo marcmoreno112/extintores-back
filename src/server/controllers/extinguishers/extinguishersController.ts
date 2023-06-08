@@ -49,17 +49,21 @@ export const createExtinguisher = async (
   res: Response,
   next: NextFunction
 ) => {
-  const extinguisher = req.body;
+  const { extinguisher } = req.body;
 
   try {
-    await Extinguisher.create(extinguisher);
+    const newExtinguisher = await Extinguisher.create(extinguisher);
+
+    if (!newExtinguisher) {
+      const error = new CustomError("Error creating the extinguisher", 400);
+
+      throw error;
+    }
 
     res.status(200).json({
-      message: "Extinguisher created",
+      extinguisher: newExtinguisher,
     });
-  } catch {
-    const error = new CustomError("Error creating the extinguisher", 400);
-
+  } catch (error) {
     next(error);
   }
 };
