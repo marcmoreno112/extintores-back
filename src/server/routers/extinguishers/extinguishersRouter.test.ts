@@ -70,6 +70,7 @@ describe(`Given a DELETE endpoint`, () => {
       expect(response.body.message).toBe(expectedMessage);
     });
   });
+
   describe("When it receives a request with a valid token and an existing id", () => {
     test("Then it should respond with status 200 and message 'Extinguisher deleted'", async () => {
       const mockExtinguisherData = extinguishersMock(1);
@@ -104,6 +105,7 @@ describe(`Given a DELETE endpoint`, () => {
       expect(response.body.message).toBe(expectedMessage);
     });
   });
+
   describe("When it receives a request with a valid token and an id that doesn't exist", () => {
     test("Then it should respond with status 404 and message 'Extinguisher not found'", async () => {
       const expectedStatus = 404;

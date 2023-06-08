@@ -1,6 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express";
 import Extinguisher from "../../../database/models/Extinguisher.js";
 import CustomError from "../../CustomError/CustomError.js";
+import { type ExtinguisherStructure } from "../../../types.js";
 
 export const getExtinguishers = async (
   req: Request,
@@ -36,7 +37,35 @@ export const deleteExtinguisher = async (
     }
 
     res.status(200).json({
-      message: `Extinguisher deleted`,
+      message: "Extinguisher deleted",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const createExtinguisher = async (
+  req: Request<
+    Record<string, unknown>,
+    Record<string, unknown>,
+    ExtinguisherStructure
+  >,
+  res: Response,
+  next: NextFunction
+) => {
+  const extinguisher = req.body;
+
+  try {
+    const newExtinguisher = await Extinguisher.create(extinguisher);
+
+    if (!newExtinguisher) {
+      const error = new CustomError("Error creating the extinguisher", 400);
+
+      throw error;
+    }
+
+    res.status(200).json({
+      message: "Extinguisher created",
     });
   } catch (error) {
     next(error);

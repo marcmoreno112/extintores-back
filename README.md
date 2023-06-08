@@ -113,3 +113,17 @@ Follow the link to access the front repository: https://github.com/isdi-coders-2
 - Response: Status 200, { extinguishers: []}
 
 ---
+
+### **DELETE /extinguishers/:id**
+
+<br>
+
+- Method: DELETE
+
+- Dev URL: http://localhost:4000/extinguishers/:id
+
+- Prod URL: https://marc-moreno-final-project-back-202304-bcn.onrender.com/extinguishers/:id
+
+- Response: Status 200, { message: "Extinguisher deleted" }
+
+---
