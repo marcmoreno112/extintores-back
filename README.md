@@ -127,3 +127,30 @@ Follow the link to access the front repository: https://github.com/isdi-coders-2
 - Response: Status 200, { message: "Extinguisher deleted" }
 
 ---
+
+### **CREATE /extinguishers/:id**
+
+<br>
+
+- Method: CREATE
+
+- Dev URL: http://localhost:4000/extinguishers/
+
+- Prod URL: https://marc-moreno-final-project-back-202304-bcn.onrender.com/extinguishers/
+
+- Request body: {
+  "brand": "H3R Performance",
+  "model": "MX250B",
+  "class": ["A", "B"],
+  "img": "https://cdn.discordapp.com/attachments/1115063176153804870/1116305879864721408/6-_H3R_Performance_-_MX250B.webp",
+  "usefulLife": "10 años",
+  "fireExtinguishingAgent": "Halon 1211",
+  "description": "El extintor H3R Performance MX250B utiliza Halon 1211 para extinguir incendios de Clase A y B. Es ideal para vehículos de motor, embarcaciones y áreas donde se requiere una respuesta rápida.",
+  "disadvantages": "El agente Halon 1211 ha sido prohibido en muchos países debido a su impacto ambiental y efectos negativos en la capa de ozono. Además, el extintor puede ser costoso en comparación con otras opciones disponibles.",
+  "strengths": "El extintor H3R Performance MX250B ofrece una respuesta rápida y eficaz en incendios de vehículos y embarcaciones. Su tamaño compacto y diseño de montaje facilitan su instalación en espacios limitados.",
+  "user": "647f46ac0d057eb27cc93b77"
+  }
+
+- Response: Status 200, { message: "Extinguisher created" }
+
+---
