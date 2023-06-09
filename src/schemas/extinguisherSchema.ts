@@ -17,6 +17,7 @@ export const extinguisherSchema = {
       description: Joi.string().required(),
       disadvantages: Joi.string().required(),
       strengths: Joi.string().required(),
+      user: Joi.string().required(),
     },
   }),
 };
