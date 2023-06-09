@@ -1,5 +1,5 @@
 import { type Request, type NextFunction, type Response } from "express";
-import { type CustomRequest } from "../../../types";
+import { type TestRequest } from "../../../types";
 import { auth } from "./authMiddleware";
 import jwt from "jsonwebtoken";
 import CustomError from "../../CustomError/CustomError";
@@ -21,7 +21,7 @@ describe("Given an auth middleware", () => {
     test("Then it should call the received next function", () => {
       jwt.verify = jest.fn().mockReturnValue("");
 
-      auth(req as CustomRequest, res as Response, next as NextFunction);
+      auth(req as TestRequest, res as Response, next as NextFunction);
 
       expect(next).toHaveBeenCalledWith();
     });
@@ -37,7 +37,7 @@ describe("Given an auth middleware", () => {
         throw expectedError;
       });
 
-      auth(req as CustomRequest, res as Response, next);
+      auth(req as TestRequest, res as Response, next);
 
       expect(next).toHaveBeenCalledWith(expectedError);
     });
@@ -51,7 +51,7 @@ describe("Given an auth middleware", () => {
 
       const expectedError = new CustomError("Missing token", 401);
 
-      auth(req as CustomRequest, res as Response, next);
+      auth(req as TestRequest, res as Response, next);
 
       expect(next).toHaveBeenCalledWith(expectedError);
     });
