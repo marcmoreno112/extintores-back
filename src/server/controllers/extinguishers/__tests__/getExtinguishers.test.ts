@@ -30,6 +30,7 @@ describe("Given a getExtinguishers controller", () => {
       const expectedStatus = 200;
 
       Extinguisher.find = jest.fn().mockReturnValue({
+        sort: jest.fn().mockReturnThis(),
         limit: jest.fn().mockReturnThis(),
         exec: jest.fn().mockResolvedValue(extinguishers),
       });
@@ -67,6 +68,7 @@ describe("Given a getExtinguishers controller", () => {
       const error = new Error("Database error");
 
       Extinguisher.find = jest.fn().mockReturnValue({
+        sort: jest.fn().mockReturnThis(),
         limit: jest.fn().mockReturnThis(),
         exec: jest.fn().mockRejectedValue(error),
       });
