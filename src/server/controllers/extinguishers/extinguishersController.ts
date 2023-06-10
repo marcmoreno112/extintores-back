@@ -4,12 +4,21 @@ import CustomError from "../../CustomError/CustomError.js";
 import { type CreateRequest } from "./types.js";
 
 export const getExtinguishers = async (
-  req: Request,
+  req: Request<
+    Record<string, unknown>,
+    Record<string, unknown>,
+    Record<string, unknown>,
+    { loadNumber: number }
+  >,
   res: Response,
   next: NextFunction
 ) => {
+  const { loadNumber } = req.query;
+
+  const limit = Number(loadNumber) * 10;
+
   try {
-    const extinguishers = await Extinguisher.find().limit(10).exec();
+    const extinguishers = await Extinguisher.find().limit(limit).exec();
 
     const status = 200;
 
