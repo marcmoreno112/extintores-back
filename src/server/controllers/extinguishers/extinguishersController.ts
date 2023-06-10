@@ -18,7 +18,10 @@ export const getExtinguishers = async (
   const limit = Number(loadNumber) * 10;
 
   try {
-    const extinguishers = await Extinguisher.find().limit(limit).exec();
+    const extinguishers = await Extinguisher.find()
+      .sort({ _id: -1 })
+      .limit(limit)
+      .exec();
 
     const status = 200;
 
