@@ -35,6 +35,8 @@ describe("Given a getExtinguishers controller", () => {
         exec: jest.fn().mockResolvedValue(extinguishers),
       });
 
+      Extinguisher.countDocuments = jest.fn().mockReturnValue(11);
+
       await getExtinguishers(
         req as Request<
           Record<string, unknown>,
@@ -49,6 +51,7 @@ describe("Given a getExtinguishers controller", () => {
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
       expect(res.json).toHaveBeenCalledWith({
         extinguishers,
+        numberOfExtinguishers: 11,
       });
     });
   });
