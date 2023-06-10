@@ -25,7 +25,9 @@ export const getExtinguishers = async (
 
     const status = 200;
 
-    res.status(status).json({ extinguishers });
+    const numberOfExtinguishers = await Extinguisher.countDocuments();
+
+    res.status(status).json({ extinguishers, numberOfExtinguishers });
   } catch {
     const error = new Error("Database error");
     next(error);
