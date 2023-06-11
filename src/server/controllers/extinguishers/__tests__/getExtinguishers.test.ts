@@ -42,7 +42,7 @@ describe("Given a getExtinguishers controller", () => {
           Record<string, unknown>,
           Record<string, unknown>,
           Record<string, unknown>,
-          { loadNumber: number }
+          { loadNumber: number; filter: string }
         >,
         res as Response,
         next as NextFunction
@@ -81,7 +81,7 @@ describe("Given a getExtinguishers controller", () => {
           Record<string, unknown>,
           Record<string, unknown>,
           Record<string, unknown>,
-          { loadNumber: number }
+          { loadNumber: number; filter: string }
         >,
         res as Response,
         next as NextFunction
