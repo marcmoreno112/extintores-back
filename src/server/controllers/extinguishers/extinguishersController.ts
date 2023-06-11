@@ -2,30 +2,35 @@ import { type NextFunction, type Request, type Response } from "express";
 import Extinguisher from "../../../database/models/Extinguisher.js";
 import CustomError from "../../CustomError/CustomError.js";
 import { type CreateRequest } from "./types.js";
+import { type FilterQuery } from "mongoose";
 
 export const getExtinguishers = async (
   req: Request<
     Record<string, unknown>,
     Record<string, unknown>,
     Record<string, unknown>,
-    { loadNumber: number }
+    { loadNumber: number; filter: string }
   >,
   res: Response,
   next: NextFunction
 ) => {
-  const { loadNumber } = req.query;
+  const { loadNumber, filter } = req.query;
 
   const limit = Number(loadNumber) * 10;
 
+  const dbFilter: FilterQuery<Record<string, unknown>> = filter
+    ? { class: filter }
+    : {};
+
   try {
-    const extinguishers = await Extinguisher.find()
+    const extinguishers = await Extinguisher.find(dbFilter)
       .sort({ _id: -1 })
       .limit(limit)
       .exec();
 
     const status = 200;
 
-    const numberOfExtinguishers = await Extinguisher.countDocuments();
+    const numberOfExtinguishers = await Extinguisher.countDocuments(dbFilter);
 
     res.status(status).json({ extinguishers, numberOfExtinguishers });
   } catch {
