@@ -15,9 +15,9 @@ describe("Given a getExtinguishers controller", () => {
           Record<string, unknown>,
           Record<string, unknown>,
           Record<string, unknown>,
-          { loadNumber: number }
+          { loadNumber: number; filter: string }
         >
-      > = { query: { loadNumber: 1 } };
+      > = { query: { loadNumber: 1, filter: "A" } };
 
       const res: Pick<Response, "status" | "json"> = {
         status: jest.fn().mockReturnThis(),
