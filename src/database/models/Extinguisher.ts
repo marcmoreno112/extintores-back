@@ -1,4 +1,4 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const extinguisherSchema = new Schema(
   {
@@ -21,14 +21,30 @@ const extinguisherSchema = new Schema(
       type: String,
       required: true,
     },
-    usefulLife: String,
-    fireExtinguishingAgent: String,
-    description: String,
-    disadvantages: String,
-    strengths: String,
+    usefulLife: {
+      type: String,
+      required: true,
+    },
+    fireExtinguishingAgent: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    disadvantages: {
+      type: String,
+      required: true,
+    },
+    strengths: {
+      type: String,
+      required: true,
+    },
     user: {
-      type: Types.ObjectId,
+      type: String,
       ref: "User",
+      required: true,
     },
   },
   {
