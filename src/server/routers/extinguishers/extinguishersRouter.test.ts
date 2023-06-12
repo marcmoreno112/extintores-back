@@ -9,6 +9,7 @@ import app from "../../index.js";
 import {
   type ExtinguisherDbData,
   type ExtinguisherData,
+  type ExtinguisherStructure,
 } from "../../../types.js";
 import { extinguishersMock } from "../../../mocks/factories/extinguisherFactory/extinguisherFactory.js";
 import User from "../../../database/models/User.js";
@@ -123,6 +124,54 @@ describe(`Given a DELETE endpoint`, () => {
         .expect(expectedStatus);
 
       expect(response.body.message).toBe(expectedMessage);
+    });
+  });
+});
+
+describe("Given a GET 'extinguishers/:647f47000d057eb27cc93b79' endpoint", () => {
+  describe("When it receives a request with a valid id", () => {
+    test("Then it should responde with status 200 and a extinguisher", async () => {
+      const mockExtinguisher = {
+        brand: "hola",
+        class: ["A"],
+        description: "hola",
+        disadvantages: "hola",
+        fireExtinguishingAgent: "hola",
+        img: "hola",
+        model: "hola",
+        strengths: "hola",
+        usefulLife: "hola",
+        user: "hola",
+      };
+
+      const newExtinguisher: ExtinguisherDbData = await Extinguisher.create(
+        mockExtinguisher
+      );
+
+      const newId = newExtinguisher._id.toString();
+
+      const newMockExtinguisher = {
+        id: newId,
+        brand: "hola",
+        class: ["A"],
+        description: "hola",
+        disadvantages: "hola",
+        fireExtinguishingAgent: "hola",
+        img: "hola",
+        model: "hola",
+        strengths: "hola",
+        usefulLife: "hola",
+        user: "hola",
+      };
+
+      const path = `${paths.extinguishers}/${newId}`;
+
+      const expectedStatus = 200;
+
+      const response: { body: { extinguisher: ExtinguisherStructure } } =
+        await request(app).get(path).expect(expectedStatus);
+
+      expect(response.body.extinguisher).toStrictEqual(newMockExtinguisher);
     });
   });
 });
