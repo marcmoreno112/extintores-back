@@ -86,3 +86,27 @@ export const createExtinguisher = async (
     next(error);
   }
 };
+
+export const getExtinguisher = async (
+  req: Request<{ id: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+
+  try {
+    const extinguisher = await Extinguisher.findById(id).exec();
+
+    if (!extinguisher) {
+      const error = new CustomError("Extinguisher not found", 404);
+
+      throw error;
+    }
+
+    res.status(200).json({
+      extinguisher,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
