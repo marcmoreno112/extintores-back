@@ -35,7 +35,9 @@ describe("Given a getExtinguishers controller", () => {
         exec: jest.fn().mockResolvedValue(extinguishers),
       });
 
-      Extinguisher.countDocuments = jest.fn().mockReturnValue(11);
+      Extinguisher.countDocuments = jest
+        .fn()
+        .mockReturnValue({ exec: jest.fn().mockResolvedValue(11) });
 
       await getExtinguishers(
         req as Request<

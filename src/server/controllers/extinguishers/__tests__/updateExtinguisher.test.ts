@@ -27,9 +27,9 @@ describe("Given a updateExtinguisher controller", () => {
 
       const next = jest.fn();
 
-      Extinguisher.findByIdAndUpdate = jest
-        .fn()
-        .mockResolvedValue(expectedUpdatedExtinguisher);
+      Extinguisher.findByIdAndUpdate = jest.fn().mockReturnValue({
+        exec: jest.fn().mockResolvedValue(expectedUpdatedExtinguisher),
+      });
 
       await updateExtinguisher(
         req as UpdateRequest,
@@ -71,7 +71,9 @@ describe("Given a updateExtinguisher controller", () => {
         expectedStatus
       );
 
-      Extinguisher.findByIdAndUpdate = jest.fn().mockRejectedValue(error);
+      Extinguisher.findByIdAndUpdate = jest.fn().mockReturnValue({
+        exec: jest.fn().mockRejectedValue(error),
+      });
 
       await updateExtinguisher(
         req as UpdateRequest,
