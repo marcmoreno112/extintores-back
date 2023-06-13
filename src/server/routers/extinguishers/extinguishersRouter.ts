@@ -4,6 +4,7 @@ import {
   deleteExtinguisher,
   getExtinguisher,
   getExtinguishers,
+  updateExtinguisher,
 } from "../../controllers/extinguishers/extinguishersController.js";
 import { auth } from "../../middlewares/authMiddleware/authMiddleware.js";
 import { validate } from "express-validation";
@@ -23,5 +24,7 @@ extinguishersRouter.post(
   validate(extinguisherSchema, {}, { abortEarly: false }),
   createExtinguisher
 );
+
+extinguishersRouter.put("/", updateExtinguisher);
 
 export default extinguishersRouter;
