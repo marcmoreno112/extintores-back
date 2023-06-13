@@ -30,7 +30,9 @@ export const getExtinguishers = async (
 
     const status = 200;
 
-    const numberOfExtinguishers = await Extinguisher.countDocuments(dbFilter);
+    const numberOfExtinguishers = await Extinguisher.countDocuments(
+      dbFilter
+    ).exec();
 
     res.status(status).json({ extinguishers, numberOfExtinguishers });
   } catch {
@@ -125,7 +127,7 @@ export const updateExtinguisher = async (
       {
         returnDocument: "after",
       }
-    );
+    ).exec();
 
     res.status(200).json({ extinguisher: updatedExtinguisher });
   } catch {
