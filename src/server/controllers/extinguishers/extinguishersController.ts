@@ -1,7 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express";
 import Extinguisher from "../../../database/models/Extinguisher.js";
 import CustomError from "../../CustomError/CustomError.js";
-import { type CreateRequest } from "./types.js";
+import { type UpdateRequest, type CreateRequest } from "./types.js";
 import { type FilterQuery } from "mongoose";
 
 export const getExtinguishers = async (
@@ -106,6 +106,34 @@ export const getExtinguisher = async (
     res.status(200).json({
       extinguisher,
     });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateExtinguisher = async (
+  req: UpdateRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const { extinguisher } = req.body;
+
+  try {
+    const updatedExtinguisher = await Extinguisher.findByIdAndUpdate(
+      extinguisher.id,
+      extinguisher,
+      {
+        returnDocument: "after",
+      }
+    );
+
+    if (!updateExtinguisher) {
+      const error = new CustomError("Error updating the extinguisher", 400);
+
+      throw error;
+    }
+
+    res.status(200).json({ extinguisher: updatedExtinguisher });
   } catch (error) {
     next(error);
   }
