@@ -175,3 +175,30 @@ describe("Given a GET 'extinguishers/:647f47000d057eb27cc93b79' endpoint", () =>
     });
   });
 });
+
+describe("Given a PUT 'extinguishers/' endpoint", () => {
+  describe("When it receives a request with a extinguisher", () => {
+    test("Then it should respond with status 200 and the extingisher updated", async () => {
+      await Extinguisher.create(extinguishersMock(1));
+
+      const expectedStatus = 200;
+
+      const data = await Extinguisher.find().exec();
+
+      const id = data[0]._id;
+
+      const newExtinguisher = {
+        extinguisher: { ...data[0], id },
+      };
+
+      const path = paths.extinguishers;
+
+      const response = await request(app)
+        .put(path)
+        .send(newExtinguisher)
+        .expect(expectedStatus);
+
+      expect(response.body.extinguisher.brand).toStrictEqual(data[0].brand);
+    });
+  });
+});
