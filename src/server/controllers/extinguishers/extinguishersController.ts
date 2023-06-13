@@ -127,14 +127,10 @@ export const updateExtinguisher = async (
       }
     );
 
-    if (!updateExtinguisher) {
-      const error = new CustomError("Error updating the extinguisher", 400);
-
-      throw error;
-    }
-
     res.status(200).json({ extinguisher: updatedExtinguisher });
-  } catch (error) {
+  } catch {
+    const error = new CustomError("Error updating the extinguisher", 400);
+
     next(error);
   }
 };
