@@ -191,7 +191,7 @@ describe("Given a PUT 'extinguishers/' endpoint", () => {
         extinguisher: { ...data[0], id },
       };
 
-      const path = paths.extinguishers;
+      const path = `${paths.extinguishers}/${id.toString()}`;
 
       const response = await request(app)
         .put(path)

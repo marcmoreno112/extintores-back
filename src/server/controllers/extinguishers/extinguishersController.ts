@@ -122,7 +122,7 @@ export const updateExtinguisher = async (
 
   try {
     const updatedExtinguisher = await Extinguisher.findByIdAndUpdate(
-      extinguisher.id,
+      req.params.id,
       extinguisher,
       {
         returnDocument: "after",
