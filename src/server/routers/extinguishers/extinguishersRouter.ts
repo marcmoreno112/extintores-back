@@ -25,6 +25,6 @@ extinguishersRouter.post(
   createExtinguisher
 );
 
-extinguishersRouter.put("/", updateExtinguisher);
+extinguishersRouter.put("/:id", updateExtinguisher);
 
 export default extinguishersRouter;

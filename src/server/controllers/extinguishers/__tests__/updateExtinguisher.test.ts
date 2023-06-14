@@ -15,6 +15,9 @@ describe("Given a updateExtinguisher controller", () => {
       };
 
       const req: Partial<UpdateRequest> = {
+        params: {
+          id: extinguisherMock.id,
+        },
         body: { extinguisher: extinguisherMock },
       };
 
