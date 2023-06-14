@@ -81,14 +81,20 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://marc-moreno-final-project-back-202304-bcn.onrender.com/extintores",
+          "raw": "https://marc-moreno-final-project-back-202304-bcn.onrender.com/extintores?1",
           "protocol": "https",
           "host": [
             "marc-moreno-final-project-back-202304-bcn",
             "onrender",
             "com"
           ],
-          "path": ["extintores"]
+          "path": ["extintores"],
+          "query": [
+            {
+              "key": "1",
+              "value": null
+            }
+          ]
         }
       },
       "response": []
@@ -109,14 +115,14 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "https://marc-moreno-final-project-back-202304-bcn.onrender.com/extintores/64711e57b77928c1d3ce27d0",
+          "raw": "https://marc-moreno-final-project-back-202304-bcn.onrender.com/extintores/648a0efbe5bd51cd1605f6d2",
           "protocol": "https",
           "host": [
             "marc-moreno-final-project-back-202304-bcn",
             "onrender",
             "com"
           ],
-          "path": ["extintores", "64711e57b77928c1d3ce27d0"]
+          "path": ["extintores", "648a0efbe5bd51cd1605f6d2"]
         }
       },
       "response": []
@@ -138,7 +144,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\"extinguisher\": {\n    \"brand\": \"H3R Performance\",\n    \"model\": \"MX250B\",\n    \"class\": [\"A\", \"B\"],\n    \"img\": \"https://cdn.discordapp.com/attachments/1115063176153804870/1116305879864721408/6-_H3R_Performance_-_MX250B.webp\",\n    \"usefulLife\": \"10 años\",\n    \"fireExtinguishingAgent\": \"Halon 1211\",\n    \"description\": \"El extintor H3R Performance MX250B utiliza Halon 1211 para extinguir incendios de Clase A y B. Es ideal para vehículos de motor, embarcaciones y áreas donde se requiere una respuesta rápida.\",\n    \"disadvantages\": \"El agente Halon 1211 ha sido prohibido en muchos países debido a su impacto ambiental y efectos negativos en la capa de ozono. Además, el extintor puede ser costoso en comparación con otras opciones disponibles.\",\n    \"strengths\": \"El extintor H3R Performance MX250B ofrece una respuesta rápida y eficaz en incendios de vehículos y embarcaciones. Su tamaño compacto y diseño de montaje facilitan su instalación en espacios limitados.\"\n  }}",
+          "raw": "{\"extinguisher\": {\n    \"brand\": \"H3R Performance\",\n    \"model\": \"MX250B\",\n    \"class\": [\"A\", \"B\"],\n    \"img\": \"https://cdn.discordapp.com/attachments/1115063176153804870/1116305879864721408/6-_H3R_Performance_-_MX250B.webp\",\n    \"usefulLife\": \"10 años\",\n    \"fireExtinguishingAgent\": \"Halon 1211\",\n    \"description\": \"El extintor H3R Performance MX250B utiliza Halon 1211 para extinguir incendios de Clase A y B. Es ideal para vehículos de motor, embarcaciones y áreas donde se requiere una respuesta rápida.\",\n    \"disadvantages\": \"El agente Halon 1211 ha sido prohibido en muchos países debido a su impacto ambiental y efectos negativos en la capa de ozono. Además, el extintor puede ser costoso en comparación con otras opciones disponibles.\",\n    \"strengths\": \"El extintor H3R Performance MX250B ofrece una respuesta rápida y eficaz en incendios de vehículos y embarcaciones. Su tamaño compacto y diseño de montaje facilitan su instalación en espacios limitados.\",\n    \"user\": \"646f6bfbb77928c1d3ce2793\"\n  }}",
           "options": {
             "raw": {
               "language": "json"
@@ -154,6 +160,51 @@
             "com"
           ],
           "path": ["extintores"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET \"extintores/:id\"",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://marc-moreno-final-project-back-202304-bcn.onrender.com/extintores/648a0efbe5bd51cd1605f6d2",
+          "protocol": "https",
+          "host": [
+            "marc-moreno-final-project-back-202304-bcn",
+            "onrender",
+            "com"
+          ],
+          "path": ["extintores", "648a0efbe5bd51cd1605f6d2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT \"extintores/:id\"",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"extinguisher\": {\n    \"id\": \"6486dc0688e77cef39754c2d\",\n    \"brand\": \"Extintour 3\", \n    \"model\": \"Fantastic\", \n    \"class\": [\"A\", \"D\"], \n    \"img\": \"https://i.pinimg.com/originals/9a/10/10/9a1010accd69e2aff17e69f581be74…\",\n    \"usefulLife\": \"450\",\n    \"fireExtinguishingAgent\": \"Si\",\n    \"description\": \"Estupendo\",\n    \"disadvantages\": \"Cap\",\n    \"strengths\": \"Totes\",\n    \"user\": \"646f6bfbb77928c1d3ce2793\"\n  }}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://marc-moreno-final-project-back-202304-bcn.onrender.com/extintores/648a0efbe5bd51cd1605f6d2",
+          "protocol": "https",
+          "host": [
+            "marc-moreno-final-project-back-202304-bcn",
+            "onrender",
+            "com"
+          ],
+          "path": ["extintores", "648a0efbe5bd51cd1605f6d2"]
         }
       },
       "response": []

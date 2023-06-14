@@ -132,7 +132,7 @@ Follow the link to access the front repository: https://github.com/isdi-coders-2
 
 <br>
 
-- Method: CREATE
+- Method: POST
 
 - Dev URL: http://localhost:4000/extinguishers/
 
@@ -152,5 +152,86 @@ Follow the link to access the front repository: https://github.com/isdi-coders-2
   }
 
 - Response: Status 200, { message: "Extinguisher created" }
+
+---
+
+### **GET /extinguishers/:id**
+
+<br>
+
+- Method: GET
+
+- Dev URL: http://localhost:4000/extinguishers/648a0efbe5bd51cd1605f6d2
+
+- Prod URL: https://marc-moreno-final-project-back-202304-bcn.onrender.com/extinguishers/648a0efbe5bd51cd1605f6d2
+
+- Response: Status 200, {
+  "extinguisher": {
+  "brand": "Buckeye",
+  "model": "13315",
+  "class": [
+  "A",
+  "B"
+  ],
+  "img": "https://cdn.discordapp.com/attachments/1115063176153804870/1115063327295553586/5-EXT2.5ABC_8.webp",
+  "description": "El extintor Buckeye 13315 es adecuado para incendios de Clase A y B. Es una opción versátil para hogares, oficinas y entornos comerciales.",
+  "disadvantages": "El polvo químico seco puede causar contaminación y requerir limpieza adicional después de su uso. Además, el extintor puede ser pesado y voluminoso para algunas personas.",
+  "strengths": "El extintor Buckeye 13315 tiene una capacidad de extinción efectiva para incendios comunes en hogares y oficinas. Su diseño robusto y duradero garantiza un rendimiento confiable durante su vida útil.",
+  "user": "647f46ac0d057eb27cc93b77",
+  "fireExtinguishingAgent": "Polvo químico seco",
+  "usefulLife": "12 años",
+  "id": "647f47000d057eb27cc93b79"
+  }
+  }
+
+---
+
+### **PUT /extinguishers/:id**
+
+<br>
+
+- Method: GET
+
+- Dev URL: http://localhost:4000/extinguishers/648a0efbe5bd51cd1605f6d2
+
+- Prod URL: https://marc-moreno-final-project-back-202304-bcn.onrender.com/extinguishers/648a0efbe5bd51cd1605f6d2
+
+- Request body: {
+  "extinguisher": {
+  "brand": "Buckeye",
+  "model": "13315",
+  "class": [
+  "A",
+  "B"
+  ],
+  "img": "https://cdn.discordapp.com/attachments/1115063176153804870/1115063327295553586/5-EXT2.5ABC_8.webp",
+  "description": "El extintor Buckeye 13315 es adecuado para incendios de Clase A y B. Es una opción versátil para hogares, oficinas y entornos comerciales.",
+  "disadvantages": "El polvo químico seco puede causar contaminación y requerir limpieza adicional después de su uso. Además, el extintor puede ser pesado y voluminoso para algunas personas.",
+  "strengths": "El extintor Buckeye 13315 tiene una capacidad de extinción efectiva para incendios comunes en hogares y oficinas. Su diseño robusto y duradero garantiza un rendimiento confiable durante su vida útil.",
+  "user": "647f46ac0d057eb27cc93b77",
+  "fireExtinguishingAgent": "Polvo químico seco",
+  "usefulLife": "12 años",
+  "id": "647f47000d057eb27cc93b79"
+  }
+  }
+
+- Response: Status 200, {
+  "extinguisher": {
+  "brand": "Buckeye",
+  "model": "13315",
+  "class": [
+  "A",
+  "B"
+  ],
+  "img": "https://cdn.discordapp.com/attachments/1115063176153804870/1115063327295553586/5-EXT2.5ABC_8.webp",
+  "description": "El extintor Buckeye 13315 es adecuado para incendios de Clase A y B. Es una opción versátil para hogares, oficinas y entornos comerciales.",
+  "disadvantages": "El polvo químico seco puede causar contaminación y requerir limpieza adicional después de su uso. Además, el extintor puede ser pesado y voluminoso para algunas personas.",
+  "strengths": "El extintor Buckeye 13315 tiene una capacidad de extinción efectiva para incendios comunes en hogares y oficinas. Su diseño robusto y duradero garantiza un rendimiento confiable durante su vida útil.",
+  "user": "647f46ac0d057eb27cc93b77",
+  "fireExtinguishingAgent": "Polvo químico seco",
+  "usefulLife": "12 años",
+  "id": "647f47000d057eb27cc93b79"
+  }
+  }
 
 ---
